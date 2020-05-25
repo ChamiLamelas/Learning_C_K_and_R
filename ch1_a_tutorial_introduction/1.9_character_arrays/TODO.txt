@@ -1,0 +1,3 @@
+I think the following problems require pointers for the purpose of resizing: 
+
+17, 18, 20-24 -- exercises 20-24 could be done with a global variable (as they come following the introduction)
