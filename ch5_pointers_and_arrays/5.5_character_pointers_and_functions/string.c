@@ -14,61 +14,75 @@ size_t strlen(const char *s)
     return curr - s;
 }
 
-void strcopy(const char *src, char *dest) {
+void strcopy(const char *src, char *dest)
+{
     *dest = *src;
-    while (*dest != '\0') {
+    while (*dest != '\0')
+    {
         src++;
         dest++;
-        *dest = *src; 
+        *dest = *src;
     }
 }
 
-int strcmp(const char *s, const char *t) {
-    while (*s == *t && *s != '\0' && *t != '\0') {
+int strcmp(const char *s, const char *t)
+{
+    while (*s == *t && *s != '\0' && *t != '\0')
+    {
         s++;
         t++;
     }
     return *s - *t;
 }
 
-void strconcat(char *s, const char *t) {
-    while (*s != '\0') {
+void strconcat(char *s, const char *t)
+{
+    while (*s != '\0')
+    {
         s++;
     }
 
     *s = *t;
-    while (*s != '\0') {
+    while (*s != '\0')
+    {
         s++;
         t++;
         *s = *t;
     }
 }
 
-int strend(const char *s, const char *t) {
+int strend(const char *s, const char *t)
+{
     int lenS = strlen(s);
     int lenT = strlen(t);
 
-    if (lenT > lenS) {
-        return 0; 
+    if (lenT > lenS)
+    {
+        return 0;
     }
 
     s += lenS - lenT;
 
-    while (*s != '\0') {
-        if (*s != *t) {
-            return 0; 
+    while (*s != '\0')
+    {
+        if (*s != *t)
+        {
+            return 0;
         }
         s++;
         t++;
     }
 
-    return 1; 
+    return 1;
 }
 
-int strindex(const char *s, char c) {
+int strindex(const char *s, char c)
+{
     const char *curr = s;
-    while (*curr != '\0') {
-        if (*curr == c) {
+    while (*curr != '\0')
+    {
+        if (*curr == c)
+        {
             return curr - s;
         }
         curr++;
@@ -76,21 +90,26 @@ int strindex(const char *s, char c) {
     return -1;
 }
 
-int substr(const char *s, const char *t) {
+int substr(const char *s, const char *t)
+{
     const char *itrS = s;
     const char *currS = NULL;
-    const char *currT = NULL; 
+    const char *currT = NULL;
 
-    while (*itrS != '\0') {
-        if (*itrS == *t) {
+    while (*itrS != '\0')
+    {
+        if (*itrS == *t)
+        {
             currS = itrS;
-            currT = t; 
-            while (*currS != '\0' && *currT != '\0' && *currS == *currT) {
+            currT = t;
+            while (*currS != '\0' && *currT != '\0' && *currS == *currT)
+            {
                 currS++;
                 currT++;
             }
-            if (*currT == '\0') {
-                return itrS - s; 
+            if (*currT == '\0')
+            {
+                return itrS - s;
             }
         }
         itrS++;
@@ -99,35 +118,43 @@ int substr(const char *s, const char *t) {
     return -1;
 }
 
-void reverse(char *s) {
-    if (*s == '\0') {
+void reverse(char *s)
+{
+    if (*s == '\0')
+    {
         return;
     }
-    char *t = s; 
-    while (*t != '\0') {
+    char *t = s;
+    while (*t != '\0')
+    {
         t++;
     }
     t--;
-    char tmp = '\0'; 
-    while (s < t) {
+    char tmp = '\0';
+    while (s < t)
+    {
         tmp = *s;
-        *s = *t; 
-        *t = tmp; 
-        s++; 
+        *s = *t;
+        *t = tmp;
+        s++;
         t--;
     }
 }
 
-int stringToInt(const char *s) {
-    int sign = 1; 
-    if (*s == '-') {
-        sign = -1; 
+int stringToInt(const char *s)
+{
+    int sign = 1;
+    if (*s == '-')
+    {
+        sign = -1;
         s++;
     }
 
-    int res = 0; 
-    while (*s != '\0') {
-        if (!isdigit(*s)) {
+    int res = 0;
+    while (*s != '\0')
+    {
+        if (!isdigit(*s))
+        {
             return 0;
         }
         res = res * 10 + (*s - '0');
@@ -135,79 +162,95 @@ int stringToInt(const char *s) {
     }
 
     return res * sign;
-} 
+}
 
-void intToString(char *s, int n) {
-    if (n == 0) {
+void intToString(char *s, int n)
+{
+    if (n == 0)
+    {
         *s = '0';
         *(s + 1) = '\0';
         return;
     }
 
-    if (n < 0) {
+    if (n < 0)
+    {
         *s = '-';
         s++;
         n *= -1;
     }
 
-    int m = n; 
+    int m = n;
     int count = 0;
-    while (m > 0) {
+    while (m > 0)
+    {
         count++;
         m /= 10;
     }
-    
+
     s += count;
-    *s = '\0'; 
-    while (n > 0) {
+    *s = '\0';
+    while (n > 0)
+    {
         s--;
         *s = (n % 10) + '0';
         n /= 10;
     }
 }
 
-double stringToDouble(const char *s) {
-    int sign = 1; 
-    if (*s == '-') {
+double stringToDouble(const char *s)
+{
+    int sign = 1;
+    if (*s == '-')
+    {
         sign = -1;
         s++;
     }
 
     double res = 0.0;
 
-    while (isdigit(*s)) {
+    while (isdigit(*s))
+    {
         res = res * 10 + (*s - '0');
         s++;
     }
 
-    if (*s == '.') {
-        double pow = 10.0; 
+    if (*s == '.')
+    {
+        double pow = 10.0;
         s++;
-        while (*s != '\0') { 
-            if (!isdigit(*s)) {
+        while (*s != '\0')
+        {
+            if (!isdigit(*s))
+            {
                 return 0.0;
             }
             res += (*s - '0') / pow;
-            pow *= 10.0; 
+            pow *= 10.0;
             s++;
         }
     }
-    else if (*s != '\0') {
+    else if (*s != '\0')
+    {
         return 0.0;
     }
 
     return res * sign;
 }
 
-size_t getline(char *s, int MAX_LEN) {
+size_t getline(char *s, int MAX_LEN)
+{
     int currChar = getchar();
-    if (currChar == EOF) {
+    if (currChar == EOF)
+    {
         return EOF;
     }
-    
-    int len = 0; 
-    while (currChar != '\n' && currChar != EOF) {
-        if (len < MAX_LEN - 1) {
+
+    int len = 0;
+    while (currChar != '\n' && currChar != EOF)
+    {
+        if (len < MAX_LEN - 1)
+        {
             *s = currChar;
             s++;
         }
@@ -219,21 +262,26 @@ size_t getline(char *s, int MAX_LEN) {
     return len;
 }
 
-void trim(char *s) {
-    char *t = s; 
-    while (isspace(*s)) {
+void trim(char *s)
+{
+    char *t = s;
+    while (isspace(*s))
+    {
         s++;
     }
 
-    if (*s == '\0') {
+    if (*s == '\0')
+    {
         *t = '\0';
         return;
     }
 
     char *lastNonWS = t;
-    while (*s != '\0') {
-        if (!isspace(*s)) {
-            lastNonWS = t; 
+    while (*s != '\0')
+    {
+        if (!isspace(*s))
+        {
+            lastNonWS = t;
         }
         *t = *s;
         t++;
@@ -241,4 +289,52 @@ void trim(char *s) {
     }
 
     *(lastNonWS + 1) = '\0';
+}
+
+void toLowerCase(char *s)
+{
+    while (*s != '\0')
+    {
+        if (*s >= 'A' && *s <= 'Z')
+        {
+            *s = (*s - 'A') + 'a';
+        }
+        s++;
+    }
+}
+
+void toUpperCase(char *s)
+{
+    while (*s != '\0')
+    {
+        if (*s >= 'a' && *s <= 'z')
+        {
+            *s = (*s - 'a') + 'A';
+        }
+        s++;
+    }
+}
+
+int toLower(int c)
+{
+    if (c >= 'A' && c <= 'Z')
+    {
+        return (c - 'A') + 'a';
+    }
+    else
+    {
+        return c;
+    }
+}
+
+int toUpper(int c)
+{
+    if (c >= 'a' && c <= 'z')
+    {
+        return (c - 'a') + 'A';
+    }
+    else
+    {
+        return c;
+    }
 }

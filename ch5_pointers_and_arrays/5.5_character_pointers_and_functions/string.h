@@ -207,4 +207,66 @@ size_t getline(char *s, int MAX_LEN);
 */
 void trim(char *s);
 
+/*
+    Converts a character string to lower case. 
+
+    Parameters: 
+        s : pointer to character string 
+
+    Output: 
+        All uppercase ascii letters are converted to their lowercase versions. 
+        All other characters remain the same. 
+        If s is a string literal, behavior is undefined 
+
+    Runtime: 
+        O(n)    - n = # characters referenced by s 
+*/
+void toLowerCase(char *s);
+
+/*
+    Converts a character string to upper case. 
+
+    Parameters: 
+        s : pointer to character string 
+
+    Output: 
+        All lowercase ascii letters are converted to their uppercase versions. 
+        All other characters remain the same. 
+        If s is a string literal, behavior is undefined 
+
+    Runtime: 
+        O(n)    - n = # characters referenced by s 
+*/
+void toUpperCase(char *s);
+
+/*
+    Converts a character to lower case. 
+
+    Parameters: 
+        c : a character
+
+    Output: 
+        If c is an uppercase ascii letter, it is converted to lowercase.
+        Otherwise, it remains the same
+
+    Runtime: 
+        O(1) 
+*/
+int toLower(int c);
+
+/*
+    Converts a character to upper case. 
+
+    Parameters: 
+        c : a character
+
+    Output: 
+        If c is an lowercase ascii letter, it is converted to uppercase.
+        Otherwise, it remains the same
+
+    Runtime: 
+        O(1) 
+*/
+int toUpper(int c);
+
 #endif

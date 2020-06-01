@@ -32,7 +32,7 @@ int main()
 
     printf("%d %d %d %d %d %d %d %d\n", strend("", ""), strend("ab", "ab"), strend("ab", "b"), strend("abc", "bc"), strend("ab", "a"), strend("abc", "ab"), strend("abc", ""), strend("abab", "ab")); // 1 1 1 1 0 0 1 1
     printf("%d %d %d %d\n", strindex("abc", 'a'), strindex("abc", 'b'), strindex("abc", 'c'), strindex("abc", 'd'));                                                                                  // 0 1 2 -1
-    printf("%d %d %d %d %d\n", substr("ababcabcd", "abcd"), substr("ababcabc", "abcd"), substr("abc", "abcd"), substr("abc", ""), substr("abc", "a"));                                                // 5 -1 -1 -1
+    printf("%d %d %d %d %d %d\n", substr("ababcabcd", "abcd"), substr("ababcabc", "abcd"), substr("abc", "abcd"), substr("abc", ""), substr("abc", "a"), substr("abc", "abc"));                                                // 5 -1 -1 -1
     
     char *ab = alloc(3);
     *ab = 'a';
@@ -125,6 +125,18 @@ int main()
 
     printf("[%s] [%s] [%s] [%s] [%s] [%s]\n", s6, s7, s8, s9, s10, s11); // [a b c] [a] [] [] [a] [a]
 
+    toUpperCase(s6);
+    toUpperCase(s7);
+    toUpperCase(s8);
+
+    printf("[%s] [%s] [%s]\n", s6, s7, s8);
+
+    toLowerCase(s6);
+    toLowerCase(s7);
+    toLowerCase(s8);
+
+    printf("[%s] [%s] [%s]\n", s6, s7, s8);
+    
     char *lineBuf = alloc(100);
     int len = getline(lineBuf, 100);
     while (len != EOF) {
