@@ -8,6 +8,14 @@
         3.  strIgnoreCaseCmp : compares two strings ignoring the case (can be used to implement flag in exercise 5.15)
         4.  strDirOrderCmp : compares two strings in "directory order" from the text (can be used to implement flag in exercise 5.16)
         5.  numCmp : compares values referenced by 2 integer pointers (can be used to compare numbers in integer sorting algorithms)
+    
+    NOTE: int (*)(void *, void *) is a TYPE. 
+    
+    That is, it is a pointer to a function that returns int and takes arguments void *, void *
+
+    Similarly, int (*)(const char *, const char *) is a TYPE. 
+
+    That is, it is a pointer to a function that returns int and takes arguments const char *, const char *
 */
 
 #include <stdio.h>
@@ -85,29 +93,31 @@ int main()
     // 2 casts are done in this call to quickSort() - compilation errors will occur otherwise
     // The first is that lines is cast from char** to void**
     // The second is that strcmp is cast from int (*)(const char *, const char *) to int (*)(void *, void *)
-    quickSort((void**)lines, 0, numLines - 1, (int (*)(void *, void *))strcmp);
+    quickSort((void **)lines, 0, numLines - 1, (int (*)(void *, void *))strcmp);
 
-    for (int i = 0; i < numLines; i++) {
+    for (int i = 0; i < numLines; i++)
+    {
         printf("%s\n", lines[i]);
     }
 
     return 0;
 }
 
+int readLines(char *lines[])
+{
+    const int MAX_LINE_LENGTH = 100;
 
-int readLines(char *lines[]) {
-    const int MAX_LINE_LENGTH = 100; 
-
-    int numLines = 0; 
+    int numLines = 0;
     lines[0] = alloc(MAX_LINE_LENGTH);
     int len = getline(lines[0], MAX_LINE_LENGTH);
 
-    while (len != EOF && numLines < MAX_LINES - 1) {
+    while (len != EOF && numLines < MAX_LINES - 1)
+    {
         numLines++;
         lines[numLines] = alloc(MAX_LINE_LENGTH);
         len = getline(lines[numLines], MAX_LINE_LENGTH);
     }
-    
+
     return numLines;
 }
 
